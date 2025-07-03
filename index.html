@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VR Kampus Asia</title>
+    <link rel="stylesheet" href="src/output.css" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+  </style>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 fixed top-0 left-0 w-full z-30 shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <!-- Logo / Title -->
+        <a href="#hero" class="flex items-center space-x-2">
+          <img class="w-8" src="src/assets/image/logo.png" alt="" />
+          <p class="text-white text-2xl font-bold">Kampus Asia VR</p>
+        </a>
+        <ul class="hidden md:flex space-x-8 text-lg">
+          <li><a href="#hero" class="hover:underline">Beranda</a></li>
+          <li>
+            <a href="#daftar-mahasiswa" class="hover:underline"
+              >Daftar Mahasiswa</a
+            >
+          </li>
+          <li><a href="#tentang" class="hover:underline">Tentang</a></li>
+        </ul>
+        <div class="md:hidden">
+          <!-- Mobile nav toggle button -->
+          <button id="menu-btn" class="focus:outline-none">
+            <svg
+              class="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+        <a
+          href="#hero"
+          class="block px-6 py-3 border-b border-gray-700 hover:bg-gray-700"
+          >Beranda</a
+        >
+        <a
+          href="#daftar-mahasiswa"
+          class="block px-6 py-3 border-b border-gray-700 hover:bg-gray-700"
+          >Daftar Mahasiswa</a
+        >
+        <a href="#tentang" class="block px-6 py-3 hover:bg-gray-700">Tentang</a>
+        <button
+          id="closeMahasiswaPopupBtn"
+          class="absolute top-2 right-3 text-3xl font-bold text-gray-600 hover:text-gray-900"
+        >
+          &times;
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="pt-24 w-full h-screen px-6 py-16 flex flex-col md:flex-row items-center gap-12"
+    >
+      <!-- Video / Foto 3D Kampus -->
+      <div
+        class="flex-1 rounded-lg overflow-hidden flex flex-col justify-center items-center space-y-2"
+      >
+        <!-- Video 3D Model -->
+        <video
+          src="src/assets/video/3d model.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="w-28 lg:w-[500px] h-auto object-cover rounded-lg"
+        ></video>
+
+        <!-- Foto Mahasiswa -->
+        <div class="flex justify-center items-center space-x-2">
+          <img
+            src="src/assets/image/abim-foto.jpg"
+            alt="Foto Abim"
+            class="w-64 h-64 object-cover rounded-lg"
+          />
+          <img
+            src="src/assets/image/mario-foto.jpg"
+            alt="Foto Mario"
+            class="w-64 h-64 object-cover rounded-lg"
+          />
+        </div>
+      </div>
+
+      <!-- Text & Button -->
+      <div class="flex-1 space-y-8 text-center md:text-left">
+        <h1 class="text-5xl font-extrabold leading-tight tracking-tight">
+          Selamat Datang di Kampus Asia VR
+        </h1>
+        <p class="text-lg text-gray-300 max-w-xl mx-auto md:mx-0">
+          Jelajahi kampus dan lihat daftar mahasiswa secara interaktif dalam
+          pengalaman VR yang futuristik
+        </p>
+        <a
+          href="#daftar-mahasiswa"
+          class="bg-gradient-to-r from-slate-900 to-purple-900 px-8 py-3 rounded-full text-white font-semibold text-lg hover:from-purple-900 hover:to-slate-900 transition outline-1 outline-purple-300 hover:outline-2 hover:outline-offset-2 hover:outline-purple-500 duration-700"
+        >
+          Eksplorasi Sekarang
+        </a>
+      </div>
+    </section>
+
+    <!-- Daftar Mahasiswa Section -->
+    <!-- Daftar Mahasiswa Section -->
+    <main class="max-w-6xl mx-auto px-6 pb-16" id="daftar-mahasiswa">
+      <section>
+        <h2
+          class="text-3xl font-semibold mb-8 border-b border-purple-500 pb-2 text-center md:text-left"
+        >
+          Daftar Mahasiswa
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          <div
+            onclick="window.location.href='ar-mario.html'"
+            class="group bg-gradient-to-r p-3 hover:outline-1 hover:from-purple-900 hover:to-slate-900 hover:outline-purple-500 rounded-xl cursor-pointer flex flex-col space-y-4 duration-700 transition"
+          >
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src="src/assets/image/mario.jpg"
+                alt="Foto Mario Yudha Pratama"
+                class="w-full h-72 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="text-center">
+              <h3 class="text-2xl font-semibold mb-1 text-white">
+                Mario Yudha Pratama
+              </h3>
+              <p class="text-purple-400 font-medium mb-1">Teknik Informatika</p>
+              <p class="text-gray-400">Fakultas Teknologi & Desain</p>
+            </div>
+          </div>
+
+          <div
+            onclick="window.location.href='ar-abim.html'"
+            class="group bg-gradient-to-r p-3 hover:outline-1 hover:from-purple-900 hover:to-slate-900 hover:outline-purple-500 rounded-xl cursor-pointer flex flex-col space-y-4 duration-700 transition"
+          >
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src="src/assets/image/Bim.jpg"
+                alt="Foto Abimanyu Priyo Widagdo"
+                class="w-full h-72 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="text-center">
+              <h3 class="text-2xl font-semibold mb-1 text-white">
+                Abimanyu Priyo Widagdo
+              </h3>
+              <p class="text-purple-400 font-medium mb-1">Teknik Informatika</p>
+              <p class="text-gray-400">Fakultas Teknologi & Desain</p>
+            </div>
+          </div>
+
+          <div
+            class="group bg-gradient-to-r p-3 hover:outline-1 hover:from-purple-900 hover:to-slate-900 hover:outline-purple-500 rounded-xl cursor-pointer flex flex-col space-y-4 duration-700 transition"
+          >
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src="src/assets/image/jakik.jpg"
+                alt="Foto Chandra Wijaya"
+                class="w-full h-72 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="text-center">
+              <h3 class="text-2xl font-semibold mb-1 text-white">
+                Zacky Haigel
+              </h3>
+              <p class="text-purple-400 font-medium mb-1">Teknik Informatika</p>
+              <p class="text-gray-400">Fakultas Teknologi & Desain</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Tentang Section -->
+    <section
+      id="tentang"
+      class="max-w-6xl mx-auto px-6 pb-16 text-center md:text-left"
+    >
+      <h2 class="text-3xl font-semibold mb-6 border-b border-purple-500 pb-2">
+        Tentang Kampus Asia VR
+      </h2>
+      <p class="text-gray-300 max-w-3xl mx-auto md:mx-0 text-lg">
+        Kampus Asia VR adalah platform interaktif yang memadukan teknologi
+        virtual reality untuk memberikan pengalaman eksplorasi kampus dan
+        mahasiswa dengan cara yang modern dan imersif.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center p-6 text-gray-400 text-sm">
+      &copy; 2025 Kampus Asia VR. abim & mario All rights reserved.
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
