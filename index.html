@@ -20,6 +20,94 @@
     }
   </style>
   <body class="bg-gray-900 text-white font-sans">
+    <!-- Splash Screen -->
+    <div
+      id="splash-screen"
+      class="fixed inset-0 flex items-center justify-center bg-gray-900 z-60 transition-opacity duration-500"
+    >
+      <h1 class="text-4xl font-bold">Halo, Selamat datang di ARSIA! 🚀</h1>
+    </div>
+
+    <!-- Onboarding Container -->
+    <div
+      id="onboarding"
+      class="fixed inset-0 bg-slate-900 bg-opacity-95 flex flex-col items-center justify-center p-6 z-50"
+    >
+      <!-- Onboarding Content -->
+      <div class="w-full text-center justify-center items-center">
+        <div id="slide-0" class="onboard-slide flex items-center space-y-4">
+          <div class="flex w-1/2 justify-center items-center">
+            <img
+              src="src/assets/image/Baru-6.png"
+              alt="Selamat Datang"
+              class="w-[600px] h-auto object-cover"
+            />
+          </div>
+          <div
+            class="flex w-1/2 justify-center items-center flex-col space-y-4"
+          >
+            <h1 class="text-7xl font-bold text-center">Selamat Datang!</h1>
+            <p class="text-center max-w-md text-xl">
+              Terima kasih sudah mengunjungi situs kami. Yuk kenalan dulu sama
+              fitur-fiturnya!
+            </p>
+          </div>
+        </div>
+
+        <div id="slide-1" class="onboard-slide hidden flex">
+          <div
+            class="flex w-1/2 justify-center items-center flex-col space-y-4 max-h-md"
+          >
+            <h2 class="text-7xl font-bold mb-4">Teknologi Canggih</h2>
+            <p class="mb-6 text-2xl">
+              Kami menggunakan teknologi AR.js untuk pengalaman visual 3D by
+              website.
+            </p>
+          </div>
+          <div class="flex w-1/2 justify-center items-center">
+            <img
+              src="src/assets/image/Rocket-4.png"
+              alt="Selamat Datang"
+              class="w-[600px] h-auto object-cover"
+            />
+          </div>
+        </div>
+
+        <div id="slide-2" class="onboard-slide hidden flex">
+          <div class="flex w-1/2 justify-center items-center">
+            <img
+              src="src/assets/image/Rocket-5.png"
+              alt="Selamat Datang"
+              class="w-[600px] h-auto object-cover"
+            />
+          </div>
+          <div class="flex w-1/2 justify-center items-center flex-col space-y-4">
+            <h2 class="text-7xl font-bold mb-4">Ayo Mulai 🚀</h2>
+            <p class="mb-6 text-2xl">
+              Ayo mulai eksplorasi!
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between absolute bottom-6 left-0 right-0 px-6">
+          <button
+            id="prevBtn"
+            class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50"
+            disabled
+          >
+            Sebelumnya
+          </button>
+          <button
+            id="nextBtn"
+            class="bg-gradient-to-r from-slate-900 to-purple-900 px-8 py-3 rounded-md text-white font-semibold text-lg hover:from-purple-900 hover:to-slate-900 transition outline-1 outline-purple-300 hover:outline-2 hover:outline-offset-2 hover:outline-purple-500 duration-700"
+          >
+            Berikutnya
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="bg-gray-900 fixed top-0 left-0 w-full z-30 shadow-md">
       <div
@@ -225,6 +313,66 @@
     </footer>
 
     <script>
+      // splash screen
+      window.addEventListener("load", () => {
+        const splash = document.getElementById("splash-screen");
+        const onboarding = document.getElementById("onboarding");
+
+        setTimeout(() => {
+          // Mulai transisi fade out splash
+          splash.classList.add("opacity-0");
+
+          splash.addEventListener(
+            "transitionend",
+            () => {
+              splash.style.display = "none";
+              onboarding.classList.remove("hidden");
+              startOnboarding();
+            },
+            { once: true }
+          );
+        }, 3000); // durasi splash 3 detik
+      });
+
+      // onboarding
+      const slides = document.querySelectorAll(".onboard-slide");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const onboarding = document.getElementById("onboarding");
+      const mainContent = document.getElementById("main-content");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("hidden", i !== index);
+        });
+
+        prevBtn.disabled = index === 0;
+        nextBtn.textContent =
+          index === slides.length - 1 ? "Selesai" : "Berikutnya";
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (currentSlide > 0) {
+          currentSlide--;
+          showSlide(currentSlide);
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          showSlide(currentSlide);
+        } else {
+          // Selesai onboarding
+          onboarding.style.display = "none";
+          mainContent.classList.remove("hidden");
+        }
+      });
+
+      // Inisialisasi
+      showSlide(currentSlide);
+
       // Mobile menu toggle
       const btn = document.getElementById("menu-btn");
       const menu = document.getElementById("mobile-menu");
