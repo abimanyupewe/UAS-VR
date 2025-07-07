@@ -37,6 +37,10 @@
           id="model-asset"
           src="src/assets/3dmodel/abim.glb"
         ></a-asset-item>
+        <a-asset-item
+          id="maskot-asset"
+          src="src/assets/3dmodel/1.glb"
+        ></a-asset-item>
         <img id="logo-image" src="src/assets/image/logo.png" />
       </a-assets>
 
@@ -46,8 +50,7 @@
         id="marker1"
       >
         <a-entity
-          id="model"
-          gltf-model="#model-asset"
+          id="combined-model"
           position="0 0 0"
           rotation="0 0 0"
           scale="1 1 1"
@@ -55,6 +58,24 @@
           rotatable
           gesture-handler
         >
+          <!-- Model Mario -->
+          <a-entity
+            id="model-abim"
+            gltf-model="#model-asset"
+            position="0 0 0"
+            rotation="0 0 0"
+            scale="0.8 0.8 0.8"
+          ></a-entity>
+
+          <!-- Maskot Asia -->
+          <a-entity
+            id="maskot-asia"
+            gltf-model="#maskot-asset"
+            position="0.7 0 0"
+            rotation="0 0 0"
+            scale="0.4 0.4 0.4"
+          ></a-entity>
+
           <a-plane
             src="#logo-image"
             position="0 1 -0.5"
@@ -64,6 +85,7 @@
             transparent="true"
           ></a-plane>
         </a-entity>
+
         <audio
           id="audio"
           src="src/assets/audio/abim.mp3"
@@ -74,11 +96,11 @@
       <a-entity camera></a-entity>
 
       <script>
-        const model = document.getElementById("model");
+        const combinedModel = document.getElementById("combined-model");
 
         document.body.addEventListener("keydown", (e) => {
           const rotateStep = 5;
-          let rot = model.getAttribute("rotation");
+          let rot = combinedModel.getAttribute("rotation");
 
           switch (e.key.toLowerCase()) {
             case "w":
@@ -103,12 +125,11 @@
               return; // tombol lain tidak berpengaruh
           }
 
-          // Pastikan nilai rotasi tetap pada rentang 0-359 derajat
           rot.x = (rot.x + 360) % 360;
           rot.y = (rot.y + 360) % 360;
           rot.z = (rot.z + 360) % 360;
 
-          model.setAttribute("rotation", rot);
+          combinedModel.setAttribute("rotation", rot);
         });
       </script>
     </a-scene>
